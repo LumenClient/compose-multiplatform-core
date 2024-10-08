@@ -77,7 +77,7 @@ fun GraphicsLayerSettings() {
                     .offset(10.dp, 10.dp)
                     .size(80.dp)
                     .background(MaterialTheme.colors.primary)
-                    .pointerHoverIcon(PointerIcon.Crosshair)
+                    .pointerHoverIcon(PointerIcon.CrossHair)
             )
         }
 

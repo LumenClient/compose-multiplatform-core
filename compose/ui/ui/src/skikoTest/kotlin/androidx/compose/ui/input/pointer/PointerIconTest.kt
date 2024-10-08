@@ -243,9 +243,9 @@ class PointerIconTest {
             assertThat(iconContext._pointerIcon).isEqualTo(PointerIcon.Text)
 
             // No move, but change should be applied anyway
-            iconState.value = PointerIcon.Crosshair
+            iconState.value = PointerIcon.CrossHair
             assertThat(recomposeChannel.receive()).isEqualTo(2)
-            assertThat(iconContext._pointerIcon).isEqualTo(PointerIcon.Crosshair)
+            assertThat(iconContext._pointerIcon).isEqualTo(PointerIcon.CrossHair)
         } finally {
             scene.close()
             frameDispatcher.cancel()
@@ -290,7 +290,7 @@ class PointerIconTest {
             assertThat(iconContext._pointerIcon).isEqualTo(null)
 
             // No move, not hovered. No pointer icon change expected
-            iconState.value = PointerIcon.Crosshair
+            iconState.value = PointerIcon.CrossHair
             assertThat(recomposeChannel.receive()).isEqualTo(2)
             assertThat(iconContext._pointerIcon).isEqualTo(null)
 

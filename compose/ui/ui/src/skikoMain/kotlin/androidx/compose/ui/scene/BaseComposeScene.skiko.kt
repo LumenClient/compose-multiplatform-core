@@ -39,6 +39,7 @@ import androidx.compose.ui.input.pointer.PointerType
 import androidx.compose.ui.node.SnapshotInvalidationTracker
 import androidx.compose.ui.platform.GlobalSnapshotManager
 import androidx.compose.ui.util.trace
+import dev.lunasa.compose.Compose
 import kotlin.concurrent.Volatile
 import kotlin.coroutines.CoroutineContext
 
@@ -116,7 +117,9 @@ internal abstract class BaseComposeScene(
     val lastKnownPointerPosition by inputHandler::lastKnownPointerPosition
 
     init {
-        GlobalSnapshotManager.ensureStarted()
+        if (Compose.ensureGlobalSnapshotManagerStarted) {
+            GlobalSnapshotManager.ensureStarted()
+        }
     }
 
     override fun close() {

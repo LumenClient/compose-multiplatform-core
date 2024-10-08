@@ -102,7 +102,7 @@ import org.junit.Test
 @OptIn(InternalTestApi::class, ExperimentalComposeUiApi::class)
 class ComposeSceneTest {
     @get:Rule
-    val screenshotRule = DesktopScreenshotTestRule("compose/ui/ui-desktop")
+    val screenshotRule = DesktopScreenshotTestRule("dev/lunasa/compose/ui/ui-desktop")
 
     @get:Rule
     val composeRule = createComposeRule()

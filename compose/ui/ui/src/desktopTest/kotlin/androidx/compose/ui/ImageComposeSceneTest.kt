@@ -52,7 +52,7 @@ import org.junit.Test
 )
 class ImageComposeSceneTest {
     @get:Rule
-    val screenshotRule = DesktopScreenshotTestRule("compose/ui/ui-desktop")
+    val screenshotRule = DesktopScreenshotTestRule("dev/lunasa/compose/ui/ui-desktop")
 
     @Ignore("enable when we make a fork of golden repo")
     @Test

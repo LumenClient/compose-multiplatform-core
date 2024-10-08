@@ -17,6 +17,7 @@
 package androidx.compose.ui.platform
 
 import androidx.compose.runtime.snapshots.Snapshot
+import dev.lunasa.compose.Compose
 import kotlinx.atomicfu.atomic
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
@@ -33,14 +34,17 @@ import kotlinx.coroutines.launch
  * Composition bootstrapping mechanisms for a particular platform/framework should call
  * [ensureStarted] during setup to initialize periodic global snapshot notifications.
  */
-internal object GlobalSnapshotManager {
+object GlobalSnapshotManager {
     private val started = atomic(0)
     private val sent = atomic(0)
 
     fun ensureStarted() {
         if (started.compareAndSet(0, 1)) {
             val channel = Channel<Unit>(1)
-            CoroutineScope(GlobalSnapshotManagerDispatcher).launch {
+            CoroutineScope(
+                Compose.globalSnapshotManagerDispatcher // See if custom dispatcher is defined
+                ?: GlobalSnapshotManagerDispatcher      // if yes, then use it, if not, then fallback to
+            ).launch {                                  // platform-default.
                 channel.consumeEach {
                     sent.compareAndSet(1, 0)
                     Snapshot.sendApplyNotifications()

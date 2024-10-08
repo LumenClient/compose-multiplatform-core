@@ -17,7 +17,6 @@
 package androidx.compose.ui.platform
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -36,7 +35,6 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
-import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.isLinux
@@ -57,7 +55,7 @@ import org.junit.runners.JUnit4
 @OptIn(InternalTestApi::class)
 class GraphicsLayerTest {
     @get:Rule
-    val screenshotRule = DesktopScreenshotTestRule("compose/ui/ui-desktop/platform")
+    val screenshotRule = DesktopScreenshotTestRule("dev/lunasa/compose/ui/ui-desktop/platform")
 
     @Test
     fun scale() {

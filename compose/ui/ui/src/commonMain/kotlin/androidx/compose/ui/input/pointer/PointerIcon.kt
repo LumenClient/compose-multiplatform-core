@@ -45,7 +45,7 @@ interface PointerIcon {
         val Default = pointerIconDefault
 
         /** Commonly used when selecting precise portions of the screen. */
-        val Crosshair = pointerIconCrosshair
+        val CrossHair = pointerIconCrosshair
 
         /** Also called an I-beam cursor, this is commonly used on selectable or editable text. */
         val Text = pointerIconText

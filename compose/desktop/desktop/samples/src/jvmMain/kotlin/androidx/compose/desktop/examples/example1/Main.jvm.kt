@@ -238,9 +238,9 @@ private fun FrameWindowScope.ScrollableContent(scrollState: ScrollState) {
         val info = "${window.renderApi} (${window.windowHandle})"
         Text(
             text = "Привет! 你好! Desktop Compose use $info: ${amount.value}",
-            color = Color.Black,
+            color = Black,
             modifier = Modifier
-                .background(Color.Blue)
+                .background(Blue)
                 .height(56.dp)
                 .wrapContentSize(Alignment.Center)
         )
@@ -256,21 +256,21 @@ private fun FrameWindowScope.ScrollableContent(scrollState: ScrollState) {
                 pushStyle(
                     SpanStyle(
                         color = Color(0xff964B00),
-                        shadow = Shadow(Color.Green, offset = Offset(1f, 1f))
+                        shadow = Shadow(Green, offset = Offset(1f, 1f))
                     )
                 )
                 append("brown fox")
                 pop()
-                pushStyle(SpanStyle(background = Color.Yellow))
+                pushStyle(SpanStyle(background = Yellow))
                 append(" 🦊 ate a ")
                 pop()
                 pushStyle(SpanStyle(fontSize = 30.sp, textDecoration = Underline))
                 append("zesty hamburgerfons")
                 pop()
                 append(" 🍔.\nThe 👩‍👩‍👧‍👧 laughed.")
-                addStyle(SpanStyle(color = Color.Green), 25, 35)
+                addStyle(SpanStyle(color = Green), 25, 35)
             },
-            color = Color.Black,
+            color = Black,
             inlineContent = mapOf(
                 inlineIndicatorId to InlineTextContent(
                     Placeholder(
@@ -285,16 +285,16 @@ private fun FrameWindowScope.ScrollableContent(scrollState: ScrollState) {
         )
 
         val loremColors = listOf(
-            Color.Black,
-            Color.Yellow,
-            Color.Green,
-            Color.Blue
+            Black,
+            Yellow,
+            Green,
+            Blue
         )
         var loremColor by remember { mutableStateOf(0) }
 
         val loremDecorations = listOf(
             TextDecoration.None,
-            TextDecoration.Underline,
+            Underline,
             TextDecoration.LineThrough
         )
         val lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do" +
@@ -605,7 +605,7 @@ private fun FrameWindowScope.ScrollableContent(scrollState: ScrollState) {
                 painterResource("androidx/compose/desktop/example/ic_baseline_deck_24.xml"),
                 "Localized description",
                 Modifier.size(100.dp).align(Alignment.CenterVertically),
-                tint = Color.Blue.copy(alpha = 0.5f)
+                tint = Blue.copy(alpha = 0.5f)
             )
         }
 
@@ -615,8 +615,8 @@ private fun FrameWindowScope.ScrollableContent(scrollState: ScrollState) {
             )
         ) {
             Box(
-                modifier = Modifier.offset(20.dp, 20.dp).size(100.dp).background(Color.Blue).pointerHoverIcon(
-                    if (isCtrlPressed.value) PointerIcon.Crosshair else PointerIcon.Text,
+                modifier = Modifier.offset(20.dp, 20.dp).size(100.dp).background(Blue).pointerHoverIcon(
+                    if (isCtrlPressed.value) PointerIcon.CrossHair else PointerIcon.Text,
                 )
             ) {
                 Text("pointerHoverIcon test with Ctrl")
@@ -633,7 +633,7 @@ fun Animations(isCircularEnabled: Boolean) = Row {
 
     val enabled = remember { mutableStateOf(true) }
     val color by animateColorAsState(
-        if (enabled.value) Color.Green else Color.Red,
+        if (enabled.value) Green else Red,
         animationSpec = TweenSpec(durationMillis = 2000)
     )
 

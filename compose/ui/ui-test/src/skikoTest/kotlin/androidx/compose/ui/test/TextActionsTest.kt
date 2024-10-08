@@ -61,19 +61,19 @@ class TextActionsTest {
 
         onNodeWithTag("tag").apply {
             assertTextEquals("hello")
-            performTextReplacement("compose")
-            assertTextEquals("compose")
+            performTextReplacement("dev/lunasa/compose")
+            assertTextEquals("dev/lunasa/compose")
         }
     }
 
     @Test
     fun testPerformTextInput() = runComposeUiTest {
         setContent {
-            TestTextField("compose")
+            TestTextField("dev/lunasa/compose")
         }
 
         onNodeWithTag("tag").apply {
-            assertTextEquals("compose")
+            assertTextEquals("dev/lunasa/compose")
             performTextInput("hello ")
             assertTextEquals("hello compose")  // The caret is at 0 initially
         }
@@ -88,7 +88,7 @@ class TextActionsTest {
         onNodeWithTag("tag").apply {
             assertTextEquals("hello")
             performTextInputSelection(TextRange(5))
-            performTextInput(" compose")
+            performTextInput("dev/lunasa/compose")
             assertTextEquals("hello compose")
         }
     }
