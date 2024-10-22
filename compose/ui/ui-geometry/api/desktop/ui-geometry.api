@@ -3,16 +3,20 @@ public final class androidx/compose/ui/geometry/CornerRadius {
 	public static final synthetic fun box-impl (J)Landroidx/compose/ui/geometry/CornerRadius;
 	public static final fun component1-impl (J)F
 	public static final fun component2-impl (J)F
+	public static fun constructor-impl (J)J
 	public static final fun copy-OHQCggk (JFF)J
 	public static synthetic fun copy-OHQCggk$default (JFFILjava/lang/Object;)J
 	public static final fun div-Bz7bX_o (JF)J
 	public fun equals (Ljava/lang/Object;)Z
 	public static fun equals-impl (JLjava/lang/Object;)Z
 	public static final fun equals-impl0 (JJ)Z
+	public final fun getPackedValue ()J
 	public static final fun getX-impl (J)F
 	public static final fun getY-impl (J)F
 	public fun hashCode ()I
 	public static fun hashCode-impl (J)I
+	public static final fun isCircular-impl (J)Z
+	public static final fun isZero-impl (J)Z
 	public static final fun minus-vF7b-mM (JJ)J
 	public static final fun plus-vF7b-mM (JJ)J
 	public static final fun times-Bz7bX_o (JF)J

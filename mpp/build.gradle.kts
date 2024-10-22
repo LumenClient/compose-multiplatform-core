@@ -96,6 +96,13 @@ val libraryToComponents = mapOf(
         ComposeComponent(":compose:material3:adaptive:adaptive-layout"),
         ComposeComponent(":compose:material3:adaptive:adaptive-navigation"),
     ),
+    "GRAPHICS_SHAPES" to listOf(
+        ComposeComponent(
+            path = ":graphics:graphics-shapes",
+            // TODO: Maybe it makes sense to support mingwX64 here for consistency
+            supportedPlatforms = ComposePlatforms.ALL_AOSP - ComposePlatforms.WINDOWS_NATIVE
+        ),
+    ),
     "LIFECYCLE" to listOf(
         ComposeComponent(
             path = ":lifecycle:lifecycle-common",
@@ -205,6 +212,7 @@ val testWebJs = tasks.register("testWebJs") {
     dependsOn(":compose:runtime:runtime:jsTest")
     dependsOn(":compose:ui:ui-text:compileTestKotlinJs")
     dependsOn(":compose:ui:ui:compileTestKotlinJs")
+    dependsOn(":navigation:navigation-runtime:jsTest")
 }
 
 val testWebWasm = tasks.register("testWebWasm") {
@@ -215,6 +223,7 @@ val testWebWasm = tasks.register("testWebWasm") {
     dependsOn(":compose:runtime:runtime:wasmJsTest")
     dependsOn(":compose:ui:ui-text:wasmJsTest")
     dependsOn(":compose:ui:ui:wasmJsTest")
+    dependsOn(":navigation:navigation-runtime:wasmJsTest")
 }
 
 tasks.register("testUIKit") {

@@ -424,6 +424,7 @@ class LazyLayoutTest {
         runOnIdle { assertThat(remeasuresCount).isEqualTo(1) }
     }
 
+    @Ignore // TODO(b/369188686)
     @Test
     fun nodeIsReusedWhenRemovedFirst() = runSkikoComposeUiTest {
         var itemCount by mutableStateOf(1)

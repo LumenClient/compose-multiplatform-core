@@ -36,16 +36,26 @@ import androidx.compose.ui.platform.PlatformDragAndDropSource
 class ComposeSceneDragAndDropNode internal constructor(
     private val dragAndDropOwner: () -> DragAndDropOwner,
 ) : DragAndDropTarget {
-    private var startedNode: DragAndDropNode? = null
-    private val currentNode: DragAndDropNode
-        get() = dragAndDropOwner().rootDragAndDropNode
+    private var startedOwner: DragAndDropOwner? = null
+    private val currentRootNode: DragAndDropNode
+        get() = dragAndDropOwner().rootNode
+
+    private fun ensureStartedOwner(event: DragAndDropEvent): DragAndDropOwner {
+        val currentOwner = dragAndDropOwner()
+        if (startedOwner != currentOwner) {
+            startedOwner?.onEnded(event)
+            startedOwner = currentOwner
+            startedOwner?.onStarted(event)
+        }
+        return currentOwner
+    }
 
     /**
      * Indicates whether there is a child that is eligible to receive a drop gesture immediately.
      * This is true if the last move happened over a child that is interested in receiving a drop.
      */
     val hasEligibleDropTarget: Boolean
-        get() = currentNode.hasEligibleDropTarget
+        get() = currentRootNode.hasEligibleDropTarget
 
     /**
      * The entry point to register interest in a drag and drop session for receiving data.
@@ -55,8 +65,9 @@ class ComposeSceneDragAndDropNode internal constructor(
      *   events.
      */
     fun acceptDragAndDropTransfer(startEvent: DragAndDropEvent): Boolean {
-        ensureStarted(null, startEvent)
-        return currentNode.acceptDragAndDropTransfer(startEvent)
+        startedOwner?.onEnded(startEvent)
+        startedOwner = null
+        return currentRootNode.acceptDragAndDropTransfer(startEvent)
     }
 
     /**
@@ -69,54 +80,27 @@ class ComposeSceneDragAndDropNode internal constructor(
     fun PlatformDragAndDropSource.StartTransferScope.startDragAndDropTransfer(
         offset: Offset,
         isTransferStarted: () -> Boolean
-    ): Unit = with(currentNode) {
+    ): Unit = with(currentRootNode) {
         asDragAndDropStartTransferScope().startDragAndDropTransfer(offset, isTransferStarted)
     }
 
-    override fun onDrop(event: DragAndDropEvent): Boolean {
-        val node = currentNode
-        ensureStarted(node, event)
-        return node.onDrop(event)
-    }
+    override fun onDrop(event: DragAndDropEvent): Boolean = ensureStartedOwner(event).onDrop(event)
+
 
     override fun onStarted(event: DragAndDropEvent) {
-        ensureStarted(currentNode, event)
+        ensureStartedOwner(event)
     }
+    override fun onEntered(event: DragAndDropEvent) = ensureStartedOwner(event).onEntered(event)
 
-    override fun onEntered(event: DragAndDropEvent) {
-        val node = currentNode
-        ensureStarted(node, event)
-        node.onEntered(event)
-    }
+    override fun onMoved(event: DragAndDropEvent) = ensureStartedOwner(event).onMoved(event)
 
-    override fun onMoved(event: DragAndDropEvent) {
-        val node = currentNode
-        ensureStarted(node, event)
-        node.onMoved(event)
-    }
+    override fun onExited(event: DragAndDropEvent) = ensureStartedOwner(event).onExited(event)
 
-    override fun onExited(event: DragAndDropEvent) {
-        val node = currentNode
-        ensureStarted(node, event)
-        node.onExited(event)
-    }
-
-    override fun onChanged(event: DragAndDropEvent) {
-        val node = currentNode
-        ensureStarted(node, event)
-        node.onChanged(event)
-    }
+    override fun onChanged(event: DragAndDropEvent) = ensureStartedOwner(event).onChanged(event)
 
     override fun onEnded(event: DragAndDropEvent) {
-        ensureStarted(null, event)
-    }
-
-    private fun ensureStarted(node: DragAndDropNode?, event: DragAndDropEvent) {
-        if (startedNode != node) {
-            startedNode?.onEnded(event)
-            startedNode = node
-            startedNode?.onStarted(event)
-        }
+        startedOwner?.onEnded(event)
+        startedOwner = null
     }
 }
 

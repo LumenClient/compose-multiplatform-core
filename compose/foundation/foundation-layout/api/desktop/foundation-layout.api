@@ -400,6 +400,7 @@ public final class androidx/compose/foundation/layout/WindowInsetsPaddingKt {
 	public static final fun consumeWindowInsets (Landroidx/compose/ui/Modifier;Landroidx/compose/foundation/layout/PaddingValues;)Landroidx/compose/ui/Modifier;
 	public static final fun consumeWindowInsets (Landroidx/compose/ui/Modifier;Landroidx/compose/foundation/layout/WindowInsets;)Landroidx/compose/ui/Modifier;
 	public static final fun onConsumedWindowInsetsChanged (Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function1;)Landroidx/compose/ui/Modifier;
+	public static final fun recalculateWindowInsets (Landroidx/compose/ui/Modifier;)Landroidx/compose/ui/Modifier;
 	public static final fun windowInsetsPadding (Landroidx/compose/ui/Modifier;Landroidx/compose/foundation/layout/WindowInsets;)Landroidx/compose/ui/Modifier;
 }
 

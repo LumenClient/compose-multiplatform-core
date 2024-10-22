@@ -24,9 +24,9 @@ package androidx.collection {
   }
 
   public final class ArraySet<E> implements java.util.Collection<E> kotlin.jvm.internal.markers.KMutableCollection kotlin.jvm.internal.markers.KMutableSet java.util.Set<E> {
+    ctor public ArraySet();
     ctor public ArraySet(androidx.collection.ArraySet<? extends E>? set);
     ctor public ArraySet(E[]? array);
-    ctor public ArraySet();
     ctor public ArraySet(optional int capacity);
     ctor public ArraySet(java.util.Collection<? extends E>? set);
     method public boolean add(E element);
@@ -150,6 +150,8 @@ package androidx.collection {
   }
 
   public final class DoubleListKt {
+    method public static inline androidx.collection.DoubleList buildDoubleList(int initialCapacity, kotlin.jvm.functions.Function1<? super androidx.collection.MutableDoubleList,kotlin.Unit> builderAction);
+    method public static inline androidx.collection.DoubleList buildDoubleList(kotlin.jvm.functions.Function1<? super androidx.collection.MutableDoubleList,kotlin.Unit> builderAction);
     method public static androidx.collection.DoubleList doubleListOf();
     method public static androidx.collection.DoubleList doubleListOf(double element1);
     method public static androidx.collection.DoubleList doubleListOf(double element1, double element2);
@@ -167,7 +169,7 @@ package androidx.collection {
     method public final inline boolean all(kotlin.jvm.functions.Function2<? super java.lang.Float,? super java.lang.Float,java.lang.Boolean> predicate);
     method public final boolean any();
     method public final inline boolean any(kotlin.jvm.functions.Function2<? super java.lang.Float,? super java.lang.Float,java.lang.Boolean> predicate);
-    method public final operator boolean contains(float key);
+    method public final inline operator boolean contains(float key);
     method public final boolean containsKey(float key);
     method public final boolean containsValue(float value);
     method public final int count();
@@ -205,6 +207,8 @@ package androidx.collection {
   }
 
   public final class FloatFloatMapKt {
+    method public static inline androidx.collection.FloatFloatMap buildFloatFloatMap(int initialCapacity, kotlin.jvm.functions.Function1<? super androidx.collection.MutableFloatFloatMap,kotlin.Unit> builderAction);
+    method public static inline androidx.collection.FloatFloatMap buildFloatFloatMap(kotlin.jvm.functions.Function1<? super androidx.collection.MutableFloatFloatMap,kotlin.Unit> builderAction);
     method public static androidx.collection.FloatFloatMap emptyFloatFloatMap();
     method public static androidx.collection.FloatFloatMap floatFloatMapOf();
     method public static androidx.collection.FloatFloatMap floatFloatMapOf(float key1, float value1);
@@ -235,7 +239,7 @@ package androidx.collection {
     method public final inline boolean all(kotlin.jvm.functions.Function2<? super java.lang.Float,? super java.lang.Integer,java.lang.Boolean> predicate);
     method public final boolean any();
     method public final inline boolean any(kotlin.jvm.functions.Function2<? super java.lang.Float,? super java.lang.Integer,java.lang.Boolean> predicate);
-    method public final operator boolean contains(float key);
+    method public final inline operator boolean contains(float key);
     method public final boolean containsKey(float key);
     method public final boolean containsValue(int value);
     method public final int count();
@@ -273,6 +277,8 @@ package androidx.collection {
   }
 
   public final class FloatIntMapKt {
+    method public static inline androidx.collection.FloatIntMap buildFloatIntMap(int initialCapacity, kotlin.jvm.functions.Function1<? super androidx.collection.MutableFloatIntMap,kotlin.Unit> builderAction);
+    method public static inline androidx.collection.FloatIntMap buildFloatIntMap(kotlin.jvm.functions.Function1<? super androidx.collection.MutableFloatIntMap,kotlin.Unit> builderAction);
     method public static androidx.collection.FloatIntMap emptyFloatIntMap();
     method public static androidx.collection.FloatIntMap floatIntMapOf();
     method public static androidx.collection.FloatIntMap floatIntMapOf(float key1, int value1);
@@ -344,6 +350,8 @@ package androidx.collection {
   }
 
   public final class FloatListKt {
+    method public static inline androidx.collection.FloatList buildFloatList(int initialCapacity, kotlin.jvm.functions.Function1<? super androidx.collection.MutableFloatList,kotlin.Unit> builderAction);
+    method public static inline androidx.collection.FloatList buildFloatList(kotlin.jvm.functions.Function1<? super androidx.collection.MutableFloatList,kotlin.Unit> builderAction);
     method public static androidx.collection.FloatList emptyFloatList();
     method public static androidx.collection.FloatList floatListOf();
     method public static androidx.collection.FloatList floatListOf(float element1);
@@ -361,7 +369,7 @@ package androidx.collection {
     method public final inline boolean all(kotlin.jvm.functions.Function2<? super java.lang.Float,? super java.lang.Long,java.lang.Boolean> predicate);
     method public final boolean any();
     method public final inline boolean any(kotlin.jvm.functions.Function2<? super java.lang.Float,? super java.lang.Long,java.lang.Boolean> predicate);
-    method public final operator boolean contains(float key);
+    method public final inline operator boolean contains(float key);
     method public final boolean containsKey(float key);
     method public final boolean containsValue(long value);
     method public final int count();
@@ -399,6 +407,8 @@ package androidx.collection {
   }
 
   public final class FloatLongMapKt {
+    method public static inline androidx.collection.FloatLongMap buildFloatLongMap(int initialCapacity, kotlin.jvm.functions.Function1<? super androidx.collection.MutableFloatLongMap,kotlin.Unit> builderAction);
+    method public static inline androidx.collection.FloatLongMap buildFloatLongMap(kotlin.jvm.functions.Function1<? super androidx.collection.MutableFloatLongMap,kotlin.Unit> builderAction);
     method public static androidx.collection.FloatLongMap emptyFloatLongMap();
     method public static androidx.collection.FloatLongMap floatLongMapOf();
     method public static androidx.collection.FloatLongMap floatLongMapOf(float key1, long value1);
@@ -418,7 +428,7 @@ package androidx.collection {
     method public final inline boolean all(kotlin.jvm.functions.Function2<? super java.lang.Float,? super V,java.lang.Boolean> predicate);
     method public final boolean any();
     method public final inline boolean any(kotlin.jvm.functions.Function2<? super java.lang.Float,? super V,java.lang.Boolean> predicate);
-    method public final operator boolean contains(float key);
+    method public final inline operator boolean contains(float key);
     method public final boolean containsKey(float key);
     method public final boolean containsValue(V value);
     method public final int count();
@@ -455,6 +465,8 @@ package androidx.collection {
   }
 
   public final class FloatObjectMapKt {
+    method public static inline <V> androidx.collection.FloatObjectMap<V> buildFloatObjectMap(int initialCapacity, kotlin.jvm.functions.Function1<? super androidx.collection.MutableFloatObjectMap<V>,kotlin.Unit> builderAction);
+    method public static inline <V> androidx.collection.FloatObjectMap<V> buildFloatObjectMap(kotlin.jvm.functions.Function1<? super androidx.collection.MutableFloatObjectMap<V>,kotlin.Unit> builderAction);
     method public static <V> androidx.collection.FloatObjectMap<V> emptyFloatObjectMap();
     method public static <V> androidx.collection.FloatObjectMap<V> floatObjectMapOf();
     method public static <V> androidx.collection.FloatObjectMap<V> floatObjectMapOf(float key1, V value1);
@@ -505,6 +517,8 @@ package androidx.collection {
   }
 
   public final class FloatSetKt {
+    method public static inline androidx.collection.FloatSet buildFloatSet(int initialCapacity, kotlin.jvm.functions.Function1<? super androidx.collection.MutableFloatSet,kotlin.Unit> builderAction);
+    method public static inline androidx.collection.FloatSet buildFloatSet(kotlin.jvm.functions.Function1<? super androidx.collection.MutableFloatSet,kotlin.Unit> builderAction);
     method public static androidx.collection.FloatSet emptyFloatSet();
     method public static androidx.collection.FloatSet floatSetOf();
     method public static androidx.collection.FloatSet floatSetOf(float element1);
@@ -522,7 +536,7 @@ package androidx.collection {
     method public final inline boolean all(kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Float,java.lang.Boolean> predicate);
     method public final boolean any();
     method public final inline boolean any(kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Float,java.lang.Boolean> predicate);
-    method public final operator boolean contains(int key);
+    method public final inline operator boolean contains(int key);
     method public final boolean containsKey(int key);
     method public final boolean containsValue(float value);
     method public final int count();
@@ -560,6 +574,8 @@ package androidx.collection {
   }
 
   public final class IntFloatMapKt {
+    method public static inline androidx.collection.IntFloatMap buildIntFloatMap(int initialCapacity, kotlin.jvm.functions.Function1<? super androidx.collection.MutableIntFloatMap,kotlin.Unit> builderAction);
+    method public static inline androidx.collection.IntFloatMap buildIntFloatMap(kotlin.jvm.functions.Function1<? super androidx.collection.MutableIntFloatMap,kotlin.Unit> builderAction);
     method public static androidx.collection.IntFloatMap emptyIntFloatMap();
     method public static androidx.collection.IntFloatMap intFloatMapOf();
     method public static androidx.collection.IntFloatMap intFloatMapOf(int key1, float value1);
@@ -579,7 +595,7 @@ package androidx.collection {
     method public final inline boolean all(kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Integer,java.lang.Boolean> predicate);
     method public final boolean any();
     method public final inline boolean any(kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Integer,java.lang.Boolean> predicate);
-    method public final operator boolean contains(int key);
+    method public final inline operator boolean contains(int key);
     method public final boolean containsKey(int key);
     method public final boolean containsValue(int value);
     method public final int count();
@@ -617,6 +633,8 @@ package androidx.collection {
   }
 
   public final class IntIntMapKt {
+    method public static inline androidx.collection.IntIntMap buildIntIntMap(int initialCapacity, kotlin.jvm.functions.Function1<? super androidx.collection.MutableIntIntMap,kotlin.Unit> builderAction);
+    method public static inline androidx.collection.IntIntMap buildIntIntMap(kotlin.jvm.functions.Function1<? super androidx.collection.MutableIntIntMap,kotlin.Unit> builderAction);
     method public static androidx.collection.IntIntMap emptyIntIntMap();
     method public static androidx.collection.IntIntMap intIntMapOf();
     method public static androidx.collection.IntIntMap intIntMapOf(int key1, int value1);
@@ -699,6 +717,8 @@ package androidx.collection {
   }
 
   public final class IntListKt {
+    method public static inline androidx.collection.IntList buildIntList(int initialCapacity, kotlin.jvm.functions.Function1<? super androidx.collection.MutableIntList,kotlin.Unit> builderAction);
+    method public static inline androidx.collection.IntList buildIntList(kotlin.jvm.functions.Function1<? super androidx.collection.MutableIntList,kotlin.Unit> builderAction);
     method public static androidx.collection.IntList emptyIntList();
     method public static androidx.collection.IntList intListOf();
     method public static androidx.collection.IntList intListOf(int element1);
@@ -716,7 +736,7 @@ package androidx.collection {
     method public final inline boolean all(kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Long,java.lang.Boolean> predicate);
     method public final boolean any();
     method public final inline boolean any(kotlin.jvm.functions.Function2<? super java.lang.Integer,? super java.lang.Long,java.lang.Boolean> predicate);
-    method public final operator boolean contains(int key);
+    method public final inline operator boolean contains(int key);
     method public final boolean containsKey(int key);
     method public final boolean containsValue(long value);
     method public final int count();
@@ -754,6 +774,8 @@ package androidx.collection {
   }
 
   public final class IntLongMapKt {
+    method public static inline androidx.collection.IntLongMap buildIntLongMap(int initialCapacity, kotlin.jvm.functions.Function1<? super androidx.collection.MutableIntLongMap,kotlin.Unit> builderAction);
+    method public static inline androidx.collection.IntLongMap buildIntLongMap(kotlin.jvm.functions.Function1<? super androidx.collection.MutableIntLongMap,kotlin.Unit> builderAction);
     method public static androidx.collection.IntLongMap emptyIntLongMap();
     method public static androidx.collection.IntLongMap intLongMapOf();
     method public static androidx.collection.IntLongMap intLongMapOf(int key1, long value1);
@@ -773,7 +795,7 @@ package androidx.collection {
     method public final inline boolean all(kotlin.jvm.functions.Function2<? super java.lang.Integer,? super V,java.lang.Boolean> predicate);
     method public final boolean any();
     method public final inline boolean any(kotlin.jvm.functions.Function2<? super java.lang.Integer,? super V,java.lang.Boolean> predicate);
-    method public final operator boolean contains(int key);
+    method public final inline operator boolean contains(int key);
     method public final boolean containsKey(int key);
     method public final boolean containsValue(V value);
     method public final int count();
@@ -810,6 +832,8 @@ package androidx.collection {
   }
 
   public final class IntObjectMapKt {
+    method public static inline <V> androidx.collection.IntObjectMap<V> buildIntObjectMap(int initialCapacity, kotlin.jvm.functions.Function1<? super androidx.collection.MutableIntObjectMap<V>,kotlin.Unit> builderAction);
+    method public static inline <V> androidx.collection.IntObjectMap<V> buildIntObjectMap(kotlin.jvm.functions.Function1<? super androidx.collection.MutableIntObjectMap<V>,kotlin.Unit> builderAction);
     method public static <V> androidx.collection.IntObjectMap<V> emptyIntObjectMap();
     method public static <V> androidx.collection.IntObjectMap<V> intObjectMapOf();
     method public static <V> androidx.collection.IntObjectMap<V> intObjectMapOf(int key1, V value1);
@@ -860,6 +884,8 @@ package androidx.collection {
   }
 
   public final class IntSetKt {
+    method public static inline androidx.collection.IntSet buildIntSet(int initialCapacity, kotlin.jvm.functions.Function1<? super androidx.collection.MutableIntSet,kotlin.Unit> builderAction);
+    method public static inline androidx.collection.IntSet buildIntSet(kotlin.jvm.functions.Function1<? super androidx.collection.MutableIntSet,kotlin.Unit> builderAction);
     method public static androidx.collection.IntSet emptyIntSet();
     method public static androidx.collection.IntSet intSetOf();
     method public static androidx.collection.IntSet intSetOf(int element1);
@@ -877,7 +903,7 @@ package androidx.collection {
     method public final inline boolean all(kotlin.jvm.functions.Function2<? super java.lang.Long,? super java.lang.Float,java.lang.Boolean> predicate);
     method public final boolean any();
     method public final inline boolean any(kotlin.jvm.functions.Function2<? super java.lang.Long,? super java.lang.Float,java.lang.Boolean> predicate);
-    method public final operator boolean contains(long key);
+    method public final inline operator boolean contains(long key);
     method public final boolean containsKey(long key);
     method public final boolean containsValue(float value);
     method public final int count();
@@ -915,6 +941,8 @@ package androidx.collection {
   }
 
   public final class LongFloatMapKt {
+    method public static inline androidx.collection.LongFloatMap buildLongFloatMap(int initialCapacity, kotlin.jvm.functions.Function1<? super androidx.collection.MutableLongFloatMap,kotlin.Unit> builderAction);
+    method public static inline androidx.collection.LongFloatMap buildLongFloatMap(kotlin.jvm.functions.Function1<? super androidx.collection.MutableLongFloatMap,kotlin.Unit> builderAction);
     method public static androidx.collection.LongFloatMap emptyLongFloatMap();
     method public static androidx.collection.LongFloatMap longFloatMapOf();
     method public static androidx.collection.LongFloatMap longFloatMapOf(long key1, float value1);
@@ -934,7 +962,7 @@ package androidx.collection {
     method public final inline boolean all(kotlin.jvm.functions.Function2<? super java.lang.Long,? super java.lang.Integer,java.lang.Boolean> predicate);
     method public final boolean any();
     method public final inline boolean any(kotlin.jvm.functions.Function2<? super java.lang.Long,? super java.lang.Integer,java.lang.Boolean> predicate);
-    method public final operator boolean contains(long key);
+    method public final inline operator boolean contains(long key);
     method public final boolean containsKey(long key);
     method public final boolean containsValue(int value);
     method public final int count();
@@ -972,6 +1000,8 @@ package androidx.collection {
   }
 
   public final class LongIntMapKt {
+    method public static inline androidx.collection.LongIntMap buildLongIntMap(int initialCapacity, kotlin.jvm.functions.Function1<? super androidx.collection.MutableLongIntMap,kotlin.Unit> builderAction);
+    method public static inline androidx.collection.LongIntMap buildLongIntMap(kotlin.jvm.functions.Function1<? super androidx.collection.MutableLongIntMap,kotlin.Unit> builderAction);
     method public static androidx.collection.LongIntMap emptyLongIntMap();
     method public static androidx.collection.LongIntMap longIntMapOf();
     method public static androidx.collection.LongIntMap longIntMapOf(long key1, int value1);
@@ -1043,6 +1073,8 @@ package androidx.collection {
   }
 
   public final class LongListKt {
+    method public static inline androidx.collection.LongList buildLongList(int initialCapacity, kotlin.jvm.functions.Function1<? super androidx.collection.MutableLongList,kotlin.Unit> builderAction);
+    method public static inline androidx.collection.LongList buildLongList(kotlin.jvm.functions.Function1<? super androidx.collection.MutableLongList,kotlin.Unit> builderAction);
     method public static androidx.collection.LongList emptyLongList();
     method public static androidx.collection.LongList longListOf();
     method public static androidx.collection.LongList longListOf(long element1);
@@ -1060,7 +1092,7 @@ package androidx.collection {
     method public final inline boolean all(kotlin.jvm.functions.Function2<? super java.lang.Long,? super java.lang.Long,java.lang.Boolean> predicate);
     method public final boolean any();
     method public final inline boolean any(kotlin.jvm.functions.Function2<? super java.lang.Long,? super java.lang.Long,java.lang.Boolean> predicate);
-    method public final operator boolean contains(long key);
+    method public final inline operator boolean contains(long key);
     method public final boolean containsKey(long key);
     method public final boolean containsValue(long value);
     method public final int count();
@@ -1098,6 +1130,8 @@ package androidx.collection {
   }
 
   public final class LongLongMapKt {
+    method public static inline androidx.collection.LongLongMap buildLongLongMap(int initialCapacity, kotlin.jvm.functions.Function1<? super androidx.collection.MutableLongLongMap,kotlin.Unit> builderAction);
+    method public static inline androidx.collection.LongLongMap buildLongLongMap(kotlin.jvm.functions.Function1<? super androidx.collection.MutableLongLongMap,kotlin.Unit> builderAction);
     method public static androidx.collection.LongLongMap emptyLongLongMap();
     method public static androidx.collection.LongLongMap longLongMapOf();
     method public static androidx.collection.LongLongMap longLongMapOf(long key1, long value1);
@@ -1127,7 +1161,7 @@ package androidx.collection {
     method public final inline boolean all(kotlin.jvm.functions.Function2<? super java.lang.Long,? super V,java.lang.Boolean> predicate);
     method public final boolean any();
     method public final inline boolean any(kotlin.jvm.functions.Function2<? super java.lang.Long,? super V,java.lang.Boolean> predicate);
-    method public final operator boolean contains(long key);
+    method public final inline operator boolean contains(long key);
     method public final boolean containsKey(long key);
     method public final boolean containsValue(V value);
     method public final int count();
@@ -1164,6 +1198,8 @@ package androidx.collection {
   }
 
   public final class LongObjectMapKt {
+    method public static inline <V> androidx.collection.LongObjectMap<V> buildLongObjectMap(int initialCapacity, kotlin.jvm.functions.Function1<? super androidx.collection.MutableLongObjectMap<V>,kotlin.Unit> builderAction);
+    method public static inline <V> androidx.collection.LongObjectMap<V> buildLongObjectMap(kotlin.jvm.functions.Function1<? super androidx.collection.MutableLongObjectMap<V>,kotlin.Unit> builderAction);
     method public static <V> androidx.collection.LongObjectMap<V> emptyLongObjectMap();
     method public static <V> androidx.collection.LongObjectMap<V> longObjectMapOf();
     method public static <V> androidx.collection.LongObjectMap<V> longObjectMapOf(long key1, V value1);
@@ -1214,6 +1250,8 @@ package androidx.collection {
   }
 
   public final class LongSetKt {
+    method public static inline androidx.collection.LongSet buildLongSet(int initialCapacity, kotlin.jvm.functions.Function1<? super androidx.collection.MutableLongSet,kotlin.Unit> builderAction);
+    method public static inline androidx.collection.LongSet buildLongSet(kotlin.jvm.functions.Function1<? super androidx.collection.MutableLongSet,kotlin.Unit> builderAction);
     method public static androidx.collection.LongSet emptyLongSet();
     method public static androidx.collection.LongSet longSetOf();
     method public static androidx.collection.LongSet longSetOf(long element1);
@@ -1970,7 +2008,7 @@ package androidx.collection {
     method public final inline boolean all(kotlin.jvm.functions.Function2<? super K,? super java.lang.Float,java.lang.Boolean> predicate);
     method public final boolean any();
     method public final inline boolean any(kotlin.jvm.functions.Function2<? super K,? super java.lang.Float,java.lang.Boolean> predicate);
-    method public final operator boolean contains(K key);
+    method public final inline operator boolean contains(K key);
     method public final boolean containsKey(K key);
     method public final boolean containsValue(float value);
     method public final int count();
@@ -2008,6 +2046,8 @@ package androidx.collection {
   }
 
   public final class ObjectFloatMapKt {
+    method public static inline <K> androidx.collection.ObjectFloatMap<K> buildObjectFloatMap(int initialCapacity, kotlin.jvm.functions.Function1<? super androidx.collection.MutableObjectFloatMap<K>,kotlin.Unit> builderAction);
+    method public static inline <K> androidx.collection.ObjectFloatMap<K> buildObjectFloatMap(kotlin.jvm.functions.Function1<? super androidx.collection.MutableObjectFloatMap<K>,kotlin.Unit> builderAction);
     method public static <K> androidx.collection.ObjectFloatMap<K> emptyObjectFloatMap();
     method public static <K> androidx.collection.MutableObjectFloatMap<K> mutableObjectFloatMapOf();
     method public static <K> androidx.collection.MutableObjectFloatMap<K> mutableObjectFloatMapOf(K key1, float value1);
@@ -2027,7 +2067,7 @@ package androidx.collection {
     method public final inline boolean all(kotlin.jvm.functions.Function2<? super K,? super java.lang.Integer,java.lang.Boolean> predicate);
     method public final boolean any();
     method public final inline boolean any(kotlin.jvm.functions.Function2<? super K,? super java.lang.Integer,java.lang.Boolean> predicate);
-    method public final operator boolean contains(K key);
+    method public final inline operator boolean contains(K key);
     method public final boolean containsKey(K key);
     method public final boolean containsValue(int value);
     method public final int count();
@@ -2065,6 +2105,8 @@ package androidx.collection {
   }
 
   public final class ObjectIntMapKt {
+    method public static inline <K> androidx.collection.ObjectIntMap<K> buildObjectIntMap(int initialCapacity, kotlin.jvm.functions.Function1<? super androidx.collection.MutableObjectIntMap<K>,kotlin.Unit> builderAction);
+    method public static inline <K> androidx.collection.ObjectIntMap<K> buildObjectIntMap(kotlin.jvm.functions.Function1<? super androidx.collection.MutableObjectIntMap<K>,kotlin.Unit> builderAction);
     method public static <K> androidx.collection.ObjectIntMap<K> emptyObjectIntMap();
     method public static <K> androidx.collection.MutableObjectIntMap<K> mutableObjectIntMapOf();
     method public static <K> androidx.collection.MutableObjectIntMap<K> mutableObjectIntMapOf(K key1, int value1);
@@ -2153,7 +2195,7 @@ package androidx.collection {
     method public final inline boolean all(kotlin.jvm.functions.Function2<? super K,? super java.lang.Long,java.lang.Boolean> predicate);
     method public final boolean any();
     method public final inline boolean any(kotlin.jvm.functions.Function2<? super K,? super java.lang.Long,java.lang.Boolean> predicate);
-    method public final operator boolean contains(K key);
+    method public final inline operator boolean contains(K key);
     method public final boolean containsKey(K key);
     method public final boolean containsValue(long value);
     method public final int count();
@@ -2191,6 +2233,8 @@ package androidx.collection {
   }
 
   public final class ObjectLongMapKt {
+    method public static inline <K> androidx.collection.ObjectLongMap<K> buildObjectLongMap(int initialCapacity, kotlin.jvm.functions.Function1<? super androidx.collection.MutableObjectLongMap<K>,kotlin.Unit> builderAction);
+    method public static inline <K> androidx.collection.ObjectLongMap<K> buildObjectLongMap(kotlin.jvm.functions.Function1<? super androidx.collection.MutableObjectLongMap<K>,kotlin.Unit> builderAction);
     method public static <K> androidx.collection.ObjectLongMap<K> emptyObjectLongMap();
     method public static <K> androidx.collection.MutableObjectLongMap<K> mutableObjectLongMapOf();
     method public static <K> androidx.collection.MutableObjectLongMap<K> mutableObjectLongMapOf(K key1, long value1);

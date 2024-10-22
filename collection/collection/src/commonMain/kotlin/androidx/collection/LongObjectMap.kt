@@ -15,11 +15,15 @@
  */
 
 @file:Suppress("RedundantVisibilityModifier", "NOTHING_TO_INLINE")
+@file:OptIn(ExperimentalContracts::class)
 
 package androidx.collection
 
 import androidx.collection.internal.EMPTY_OBJECTS
 import androidx.collection.internal.requirePrecondition
+import kotlin.contracts.ExperimentalContracts
+import kotlin.contracts.InvocationKind
+import kotlin.contracts.contract
 import kotlin.jvm.JvmField
 import kotlin.jvm.JvmOverloads
 
@@ -214,6 +218,40 @@ public fun <V> mutableLongObjectMapOf(
     }
 
 /**
+ * Builds a new [LongObjectMap] by populating a [MutableLongObjectMap] using the given
+ * [builderAction].
+ *
+ * The instance passed as a receiver to the [builderAction] is valid only inside that function.
+ * Using it outside of the function produces an unspecified behavior.
+ *
+ * @param builderAction Lambda in which the [MutableLongObjectMap] can be populated.
+ */
+public inline fun <V> buildLongObjectMap(
+    builderAction: MutableLongObjectMap<V>.() -> Unit,
+): LongObjectMap<V> {
+    contract { callsInPlace(builderAction, InvocationKind.EXACTLY_ONCE) }
+    return MutableLongObjectMap<V>().apply(builderAction)
+}
+
+/**
+ * Builds a new [LongObjectMap] by populating a [MutableLongObjectMap] using the given
+ * [builderAction].
+ *
+ * The instance passed as a receiver to the [builderAction] is valid only inside that function.
+ * Using it outside of the function produces an unspecified behavior.
+ *
+ * @param initialCapacity Hint for the expected number of pairs added in the [builderAction].
+ * @param builderAction Lambda in which the [MutableLongObjectMap] can be populated.
+ */
+public inline fun <V> buildLongObjectMap(
+    initialCapacity: Int,
+    builderAction: MutableLongObjectMap<V>.() -> Unit,
+): LongObjectMap<V> {
+    contract { callsInPlace(builderAction, InvocationKind.EXACTLY_ONCE) }
+    return MutableLongObjectMap<V>(initialCapacity).apply(builderAction)
+}
+
+/**
  * [LongObjectMap] is a container with a [Map]-like interface for keys with [Long] primitives and
  * reference type values.
  *
@@ -383,13 +421,13 @@ public sealed class LongObjectMap<V> {
         return count
     }
 
-    /** Returns true if the specified [key] is present in this hash map, false otherwise. */
-    public operator fun contains(key: Long): Boolean = findKeyIndex(key) >= 0
+    /** Returns true if the specified [key] is present in this map, false otherwise. */
+    public inline operator fun contains(key: Long): Boolean = containsKey(key)
 
-    /** Returns true if the specified [key] is present in this hash map, false otherwise. */
+    /** Returns true if the specified [key] is present in this map, false otherwise. */
     public fun containsKey(key: Long): Boolean = findKeyIndex(key) >= 0
 
-    /** Returns true if the specified [value] is present in this hash map, false otherwise. */
+    /** Returns true if the specified [value] is present in this map, false otherwise. */
     public fun containsValue(value: V): Boolean {
         forEachValue { v -> if (value == v) return true }
         return false

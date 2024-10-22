@@ -27,11 +27,11 @@ internal object RootMeasurePolicy :
         measurables: List<Measurable>,
         constraints: Constraints
     ): MeasureResult {
-        return when {
-            measurables.isEmpty() -> {
+        return when (measurables.size) {
+            0 -> {
                 layout(constraints.minWidth, constraints.minHeight) {}
             }
-            measurables.size == 1 -> {
+            1 -> {
                 val placeable = measurables[0].measure(constraints)
                 layout(constraints.maxWidth, constraints.maxHeight) {
                     placeable.placeRelativeWithLayer(0, 0)

@@ -16,6 +16,7 @@
 
 package androidx.collection
 
+import kotlin.js.JsName
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.test.Test
@@ -650,6 +651,7 @@ class SieveCacheTest {
     }
 
     @Test
+    @JsName("test_equals")
     fun equals() {
         val cache = createStandardCache()
         cache["Hello"] = "World"

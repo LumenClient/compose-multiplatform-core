@@ -15,6 +15,7 @@
  */
 package androidx.collection
 
+import kotlin.js.JsName
 import kotlin.test.Test
 import kotlin.test.assertContentEquals
 import kotlin.test.assertEquals
@@ -768,6 +769,7 @@ class OrderedScatterSetTest {
     }
 
     @Test
+    @JsName("test_equals")
     fun equals() {
         val set = MutableOrderedScatterSet<String?>()
         set += "Hello"

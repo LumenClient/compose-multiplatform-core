@@ -5,6 +5,7 @@ public final class androidx/compose/ui/unit/Constraints {
 	public static fun constructor-impl (J)J
 	public static final fun copy-Zbe2FdA (JIIII)J
 	public static synthetic fun copy-Zbe2FdA$default (JIIIIILjava/lang/Object;)J
+	public static final fun copyMaxDimensions-msEJaDk (J)J
 	public fun equals (Ljava/lang/Object;)Z
 	public static fun equals-impl (JLjava/lang/Object;)Z
 	public static final fun equals-impl0 (JJ)Z
@@ -35,6 +36,7 @@ public final class androidx/compose/ui/unit/Constraints$Companion {
 }
 
 public final class androidx/compose/ui/unit/ConstraintsKt {
+	public static final field MaxDimensionsAndFocusMask J
 	public static final fun Constraints (IIII)J
 	public static synthetic fun Constraints$default (IIIIILjava/lang/Object;)J
 	public static final fun constrain-4WqzIAM (JJ)J

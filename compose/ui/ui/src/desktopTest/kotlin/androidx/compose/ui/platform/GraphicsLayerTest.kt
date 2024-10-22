@@ -44,7 +44,6 @@ import androidx.compose.ui.test.junit4.DesktopScreenshotTestRule
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
-import kotlin.test.Ignore
 import org.junit.Assume.assumeTrue
 import org.junit.Rule
 import org.junit.Test
@@ -148,8 +147,6 @@ class GraphicsLayerTest {
 
     }
 
-    // FIXME: It's a regression after performance optimizations from https://r.android.com/3127234
-    @Ignore("https://youtrack.jetbrains.com/issue/CMP-6764")
     @Test
     fun rotationX() {
 
@@ -165,8 +162,6 @@ class GraphicsLayerTest {
         screenshotRule.write(snapshot)
     }
 
-    // FIXME: It's a regression after performance optimizations from https://r.android.com/3127234
-    @Ignore("https://youtrack.jetbrains.com/issue/CMP-6764")
     @Test
     fun rotationY() {
 
@@ -181,9 +176,6 @@ class GraphicsLayerTest {
         }
         screenshotRule.write(snapshot)
     }
-
-    // FIXME: It's a regression after performance optimizations from https://r.android.com/3127234
-    @Ignore("https://youtrack.jetbrains.com/issue/CMP-6764")
     @Test
     fun rotationZ() {
 
@@ -199,8 +191,6 @@ class GraphicsLayerTest {
         screenshotRule.write(snapshot)
     }
 
-    // FIXME: It's a regression after performance optimizations from https://r.android.com/3127234
-    @Ignore("https://youtrack.jetbrains.com/issue/CMP-6764")
     @Test
     fun rotationXYZ() {
 
@@ -218,8 +208,6 @@ class GraphicsLayerTest {
         screenshotRule.write(snapshot)
     }
 
-    // FIXME: It's a regression after performance optimizations from https://r.android.com/3127234
-    @Ignore("https://youtrack.jetbrains.com/issue/CMP-6764")
     @Test
     fun `nested layer transformations`() {
         val snapshot = renderComposeScene(width = 40, height = 40) {

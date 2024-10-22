@@ -24,6 +24,7 @@ public final class androidx/compose/foundation/BasicTooltipDefaults {
 }
 
 public final class androidx/compose/foundation/BasicTooltipKt {
+	public static final fun BasicTooltipBox (Landroidx/compose/ui/window/PopupPositionProvider;Lkotlin/jvm/functions/Function2;Landroidx/compose/foundation/BasicTooltipState;Landroidx/compose/ui/Modifier;ZZLkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;II)V
 	public static final fun BasicTooltipState (ZZLandroidx/compose/foundation/MutatorMutex;)Landroidx/compose/foundation/BasicTooltipState;
 	public static synthetic fun BasicTooltipState$default (ZZLandroidx/compose/foundation/MutatorMutex;ILjava/lang/Object;)Landroidx/compose/foundation/BasicTooltipState;
 	public static final fun rememberBasicTooltipState (ZZLandroidx/compose/foundation/MutatorMutex;Landroidx/compose/runtime/Composer;II)Landroidx/compose/foundation/BasicTooltipState;
@@ -36,10 +37,6 @@ public abstract interface class androidx/compose/foundation/BasicTooltipState {
 	public abstract fun onDispose ()V
 	public abstract fun show (Landroidx/compose/foundation/MutatePriority;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun show$default (Landroidx/compose/foundation/BasicTooltipState;Landroidx/compose/foundation/MutatePriority;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-}
-
-public final class androidx/compose/foundation/BasicTooltip_skikoKt {
-	public static final fun BasicTooltipBox (Landroidx/compose/ui/window/PopupPositionProvider;Lkotlin/jvm/functions/Function2;Landroidx/compose/foundation/BasicTooltipState;Landroidx/compose/ui/Modifier;ZZLkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;II)V
 }
 
 public final class androidx/compose/foundation/BorderKt {
@@ -102,6 +99,15 @@ public final class androidx/compose/foundation/ClipScrollableContainerKt {
 
 public abstract interface class androidx/compose/foundation/CombinedClickableNode : androidx/compose/ui/node/PointerInputModifierNode {
 	public abstract fun update-nSzSaCc (Lkotlin/jvm/functions/Function0;Ljava/lang/String;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;Landroidx/compose/foundation/interaction/MutableInteractionSource;Landroidx/compose/foundation/IndicationNodeFactory;ZLjava/lang/String;Landroidx/compose/ui/semantics/Role;)V
+}
+
+public final class androidx/compose/foundation/ComposeFoundationFlags {
+	public static final field $stable I
+	public static field DragGesturePickUpEnabled Z
+	public static field DraggableAddDownEventFixEnabled Z
+	public static final field INSTANCE Landroidx/compose/foundation/ComposeFoundationFlags;
+	public static field NewNestedFlingPropagationEnabled Z
+	public static field RemoveBasicTextGraphicsLayerEnabled Z
 }
 
 public final class androidx/compose/foundation/ContextMenuData {
@@ -504,11 +510,8 @@ public final class androidx/compose/foundation/content/TransferableContent_skiko
 }
 
 public final class androidx/compose/foundation/draganddrop/DragAndDropSourceKt {
-	public static final fun dragAndDropSource (Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;)Landroidx/compose/ui/Modifier;
-}
-
-public abstract interface class androidx/compose/foundation/draganddrop/DragAndDropSourceScope : androidx/compose/ui/input/pointer/PointerInputScope {
-	public abstract fun startTransfer (Landroidx/compose/ui/draganddrop/DragAndDropTransferData;)V
+	public static final fun dragAndDropSource (Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function1;)Landroidx/compose/ui/Modifier;
+	public static final fun dragAndDropSource (Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Landroidx/compose/ui/Modifier;
 }
 
 public final class androidx/compose/foundation/draganddrop/DragAndDropTargetKt {

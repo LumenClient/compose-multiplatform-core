@@ -15,12 +15,16 @@
  */
 
 @file:Suppress("RedundantVisibilityModifier", "NOTHING_TO_INLINE")
+@file:OptIn(ExperimentalContracts::class)
 
 package androidx.collection
 
 import androidx.collection.internal.EMPTY_OBJECTS
 import androidx.collection.internal.requirePrecondition
 import androidx.collection.internal.throwNoSuchElementException
+import kotlin.contracts.ExperimentalContracts
+import kotlin.contracts.InvocationKind
+import kotlin.contracts.contract
 import kotlin.jvm.JvmField
 import kotlin.jvm.JvmOverloads
 
@@ -217,6 +221,40 @@ public fun <K> mutableObjectFloatMapOf(
     }
 
 /**
+ * Builds a new [ObjectFloatMap] by populating a [MutableObjectFloatMap] using the given
+ * [builderAction].
+ *
+ * The instance passed as a receiver to the [builderAction] is valid only inside that function.
+ * Using it outside of the function produces an unspecified behavior.
+ *
+ * @param builderAction Lambda in which the [MutableObjectFloatMap] can be populated.
+ */
+public inline fun <K> buildObjectFloatMap(
+    builderAction: MutableObjectFloatMap<K>.() -> Unit,
+): ObjectFloatMap<K> {
+    contract { callsInPlace(builderAction, InvocationKind.EXACTLY_ONCE) }
+    return MutableObjectFloatMap<K>().apply(builderAction)
+}
+
+/**
+ * Builds a new [ObjectFloatMap] by populating a [MutableObjectFloatMap] using the given
+ * [builderAction].
+ *
+ * The instance passed as a receiver to the [builderAction] is valid only inside that function.
+ * Using it outside of the function produces an unspecified behavior.
+ *
+ * @param initialCapacity Hint for the expected number of pairs added in the [builderAction].
+ * @param builderAction Lambda in which the [MutableObjectFloatMap] can be populated.
+ */
+public inline fun <K> buildObjectFloatMap(
+    initialCapacity: Int,
+    builderAction: MutableObjectFloatMap<K>.() -> Unit,
+): ObjectFloatMap<K> {
+    contract { callsInPlace(builderAction, InvocationKind.EXACTLY_ONCE) }
+    return MutableObjectFloatMap<K>(initialCapacity).apply(builderAction)
+}
+
+/**
  * [ObjectFloatMap] is a container with a [Map]-like interface for keys with reference types and
  * [Float] primitives for values.
  *
@@ -396,13 +434,13 @@ public sealed class ObjectFloatMap<K> {
         return count
     }
 
-    /** Returns true if the specified [key] is present in this hash map, false otherwise. */
-    public operator fun contains(key: K): Boolean = findKeyIndex(key) >= 0
+    /** Returns true if the specified [key] is present in this map, false otherwise. */
+    public inline operator fun contains(key: K): Boolean = containsKey(key)
 
-    /** Returns true if the specified [key] is present in this hash map, false otherwise. */
+    /** Returns true if the specified [key] is present in this map, false otherwise. */
     public fun containsKey(key: K): Boolean = findKeyIndex(key) >= 0
 
-    /** Returns true if the specified [value] is present in this hash map, false otherwise. */
+    /** Returns true if the specified [value] is present in this map, false otherwise. */
     public fun containsValue(value: Float): Boolean {
         forEachValue { v -> if (value == v) return true }
         return false

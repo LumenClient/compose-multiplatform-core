@@ -143,8 +143,9 @@ import androidx.compose.ui.semantics.SemanticsProperties.TextSelectionRange
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.getOrNull
-import androidx.compose.ui.semantics.invisibleToUser
+import androidx.compose.ui.semantics.hideFromAccessibility
 import androidx.compose.ui.semantics.isTraversalGroup
+import androidx.compose.ui.semantics.pageUp
 import androidx.compose.ui.semantics.paneTitle
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
@@ -561,6 +562,58 @@ class AndroidAccessibilityTest {
                 assertThat(actionList)
                     .contains(
                         AccessibilityActionCompat(ACTION_CLICK, null),
+                    )
+            }
+        }
+    }
+
+    @SdkSuppress(minSdkVersion = 29) // Pager a11y actions are only available from API 29
+    @Test
+    fun testCreateAccessibilityNodeInfo_pagerActionsWithoutRole_shouldSetPagerActions() {
+        // Arrange.
+        setContent {
+            Box(Modifier.semantics { pageUp { true } }.testTag(tag)) { BasicText("Text") }
+        }
+        val virtualId = rule.onNodeWithTag(tag).semanticsId
+
+        // Act.
+        val info = rule.runOnIdle { createAccessibilityNodeInfo(virtualId) }
+
+        // Assert.
+        rule.runOnIdle {
+            with(info) {
+                assertThat(actionList)
+                    .contains(
+                        AccessibilityActionCompat(android.R.id.accessibilityActionPageUp, null)
+                    )
+            }
+        }
+    }
+
+    @SdkSuppress(minSdkVersion = 29) // Pager a11y actions are only available from API 29
+    @Test
+    fun testCreateAccessibilityNodeInfo_pagerActionsRole_shouldNotSetPagerActions() {
+        // Arrange.
+        setContent {
+            Box(
+                Modifier.semantics { role = Role.Carousel }
+                    .semantics { pageUp { true } }
+                    .testTag(tag)
+            ) {
+                BasicText("Text")
+            }
+        }
+        val virtualId = rule.onNodeWithTag(tag).semanticsId
+
+        // Act.
+        val info = rule.runOnIdle { createAccessibilityNodeInfo(virtualId) }
+
+        // Assert.
+        rule.runOnIdle {
+            with(info) {
+                assertThat(actionList)
+                    .doesNotContain(
+                        AccessibilityActionCompat(android.R.id.accessibilityActionPageUp, null)
                     )
             }
         }
@@ -3356,12 +3409,16 @@ class AndroidAccessibilityTest {
         assertThat(vitrualViewId).isEqualTo(hitTestedId)
     }
 
-    @OptIn(ExperimentalComposeUiApi::class)
     @Test
-    fun testSemanticsHitTest_invisibleToUserSemantics() {
+    fun testSemanticsHitTest_hideFromAccessibilitySemantics() {
         // Arrange.
         setContent {
-            Box(Modifier.size(100.dp).clickable {}.testTag(tag).semantics { invisibleToUser() }) {
+            Box(
+                Modifier.size(100.dp)
+                    .clickable {}
+                    .testTag(tag)
+                    .semantics { hideFromAccessibility() }
+            ) {
                 BasicText("")
             }
         }
@@ -4106,9 +4163,8 @@ class AndroidAccessibilityTest {
         rule.runOnIdle { assertThat(hitNodeId).isEqualTo(InvalidId) }
     }
 
-    @OptIn(ExperimentalComposeUiApi::class)
     @Test
-    fun testAccessibilityNodeInfoTreePruned_invisibleDoesNotPrune() {
+    fun testAccessibilityNodeInfoTreePruned_hideFromAccessibilityDoesNotPrune() {
         // Arrange.
         val parentTag = "ParentForOverlappedChildren"
         val childOneTag = "OverlappedChildOne"
@@ -4120,7 +4176,7 @@ class AndroidAccessibilityTest {
                         "Child One",
                         Modifier.zIndex(1f)
                             .testTag(childOneTag)
-                            .semantics { invisibleToUser() }
+                            .semantics { hideFromAccessibility() }
                             .requiredSize(50.toDp())
                     )
                     BasicText("Child Two", Modifier.testTag(childTwoTag).requiredSize(50.toDp()))
@@ -5321,7 +5377,7 @@ private fun SimpleSubcomposeLayout(
         val layoutWidth = constraints.maxWidth
         val layoutHeight = constraints.maxHeight
 
-        val looseConstraints = constraints.copy(minWidth = 0, minHeight = 0)
+        val looseConstraints = constraints.copyMaxDimensions()
 
         layout(layoutWidth, layoutHeight) {
             val placeablesOne =
@@ -5352,7 +5408,7 @@ fun ScaffoldedSubcomposeLayout(
     SubcomposeLayout(modifier) { constraints ->
         val layoutWidth = constraints.maxWidth
         val layoutHeight = constraints.maxHeight
-        val looseConstraints = constraints.copy(minWidth = 0, minHeight = 0)
+        val looseConstraints = constraints.copyMaxDimensions()
         layout(layoutWidth, layoutHeight) {
             val topPlaceables =
                 subcompose(ScaffoldedSlots.Top, topBar).fastMap { it.measure(looseConstraints) }

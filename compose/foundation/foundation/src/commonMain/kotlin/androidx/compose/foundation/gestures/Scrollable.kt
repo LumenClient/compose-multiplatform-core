@@ -21,9 +21,12 @@ import androidx.compose.animation.core.DecayAnimationSpec
 import androidx.compose.animation.core.animate
 import androidx.compose.animation.core.animateDecay
 import androidx.compose.animation.splineBasedDecay
+import androidx.compose.foundation.ComposeFoundationFlags.NewNestedFlingPropagationEnabled
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.FocusedBoundsObserverNode
 import androidx.compose.foundation.MutatePriority
 import androidx.compose.foundation.OverscrollEffect
+import androidx.compose.foundation.PlatformOptimizedCancellationException
 import androidx.compose.foundation.gestures.Orientation.Horizontal
 import androidx.compose.foundation.gestures.Orientation.Vertical
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -291,6 +294,16 @@ private class ScrollableNode(
             reverseDirection = reverseDirection,
             flingBehavior = flingBehavior ?: defaultFlingBehavior,
             nestedScrollDispatcher = nestedScrollDispatcher,
+            shouldCancelFling = { flingPixels ->
+                // fling should be cancelled if we try to scroll more than we can or if this node
+                // is detached during a fling.
+                // tries to scroll forward but cannot.
+                (flingPixels > 0.0f && !state.canScrollForward) ||
+                    // tries to scroll backward but cannot.
+                    (flingPixels < 0.0f && !state.canScrollBackward) ||
+                    // node is detached.
+                    !isAttached
+            }
         )
 
     private val nestedScrollConnection =
@@ -331,6 +344,7 @@ private class ScrollableNode(
 
     override fun onDragStarted(startedPosition: Offset) {}
 
+    @OptIn(ExperimentalFoundationApi::class)
     override fun onDragStopped(velocity: Velocity) {
         nestedScrollDispatcher.coroutineScope.launch {
             scrollingLogic.onScrollStopped(velocity, isMouseWheel = false)
@@ -609,6 +623,7 @@ internal class ScrollingLogic(
     private var flingBehavior: FlingBehavior,
     private var reverseDirection: Boolean,
     private var nestedScrollDispatcher: NestedScrollDispatcher,
+    private val shouldCancelFling: (Float) -> Boolean
 ) {
 
     fun Float.toOffset(): Offset =
@@ -737,13 +752,23 @@ internal class ScrollingLogic(
         }
     }
 
+    @OptIn(ExperimentalFoundationApi::class)
     suspend fun NestedScrollScope.doFlingAnimation(available: Velocity): Velocity {
         var result: Velocity = available
-
         val nestedScrollScope = this
         val reverseScope =
             object : ScrollScope {
                 override fun scrollBy(pixels: Float): Float {
+                    // Fling has hit the bounds or node left composition,
+                    // cancel it to allow continuation. This will conclude this node's fling,
+                    // allowing the onPostFling signal to be called
+                    // with the leftover velocity from the fling animation. Any nested scroll
+                    // node above will be able to pick up the left over velocity and continue
+                    // the fling.
+                    if (NewNestedFlingPropagationEnabled && shouldCancelFling(pixels)) {
+                        throw FlingCancellationException()
+                    }
+
                     return nestedScrollScope
                         .scrollByWithOverscroll(
                             offset = pixels.toOffset().reverseIfNeeded(),
@@ -982,3 +1007,7 @@ private suspend fun ScrollingLogic.semanticsScrollBy(offset: Offset): Offset {
     }
     return previousValue.toOffset()
 }
+
+internal class FlingCancellationException() : PlatformOptimizedCancellationException(
+    message = "The fling animation was cancelled"
+)

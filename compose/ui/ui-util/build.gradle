@@ -61,6 +61,7 @@ if(AndroidXComposePlugin.isMultiplatformEnabled(project)) {
         sourceSets {
             commonMain.dependencies {
                 implementation(libs.kotlinStdlibCommon)
+                implementation(project(":collection:collection"))
             }
 
             jvmMain.dependencies {

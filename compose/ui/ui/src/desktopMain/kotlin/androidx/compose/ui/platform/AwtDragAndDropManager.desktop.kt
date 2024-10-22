@@ -97,7 +97,7 @@ internal class AwtDragAndDropManager(
         )
     }
 
-    override val isRequestDragAndDropTransferSupported: Boolean
+    override val isRequestDragAndDropTransferRequired: Boolean
         get() = true
 
     override fun requestDragAndDropTransfer(source: PlatformDragAndDropSource, offset: Offset) {

@@ -56,6 +56,19 @@ public final class androidx/compose/material3/adaptive/layout/ListDetailPaneScaf
 	public final fun getList ()Landroidx/compose/material3/adaptive/layout/ThreePaneScaffoldRole;
 }
 
+public final class androidx/compose/material3/adaptive/layout/MutableThreePaneScaffoldState : androidx/compose/material3/adaptive/layout/ThreePaneScaffoldState {
+	public static final field $stable I
+	public fun <init> (Landroidx/compose/material3/adaptive/layout/ThreePaneScaffoldValue;)V
+	public final fun animateTo (Landroidx/compose/material3/adaptive/layout/ThreePaneScaffoldValue;Landroidx/compose/animation/core/FiniteAnimationSpec;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun animateTo$default (Landroidx/compose/material3/adaptive/layout/MutableThreePaneScaffoldState;Landroidx/compose/material3/adaptive/layout/ThreePaneScaffoldValue;Landroidx/compose/animation/core/FiniteAnimationSpec;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public fun getCurrentState ()Landroidx/compose/material3/adaptive/layout/ThreePaneScaffoldValue;
+	public fun getProgressFraction ()F
+	public fun getTargetState ()Landroidx/compose/material3/adaptive/layout/ThreePaneScaffoldValue;
+	public final fun seekTo (FLandroidx/compose/material3/adaptive/layout/ThreePaneScaffoldValue;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun seekTo$default (Landroidx/compose/material3/adaptive/layout/MutableThreePaneScaffoldState;FLandroidx/compose/material3/adaptive/layout/ThreePaneScaffoldValue;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun snapTo (Landroidx/compose/material3/adaptive/layout/ThreePaneScaffoldValue;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
 public final class androidx/compose/material3/adaptive/layout/PaneAdaptedValue {
 	public static final field Companion Landroidx/compose/material3/adaptive/layout/PaneAdaptedValue$Companion;
 	public static final synthetic fun box-impl (Ljava/lang/String;)Landroidx/compose/material3/adaptive/layout/PaneAdaptedValue;
@@ -127,8 +140,8 @@ public abstract interface class androidx/compose/material3/adaptive/layout/PaneE
 }
 
 public final class androidx/compose/material3/adaptive/layout/PaneExpansionStateKt {
-	public static final fun rememberPaneExpansionState (Landroidx/compose/material3/adaptive/layout/PaneExpansionStateKey;Ljava/util/List;Landroidx/compose/runtime/Composer;II)Landroidx/compose/material3/adaptive/layout/PaneExpansionState;
-	public static final fun rememberPaneExpansionState (Landroidx/compose/material3/adaptive/layout/PaneExpansionStateKeyProvider;Ljava/util/List;Landroidx/compose/runtime/Composer;II)Landroidx/compose/material3/adaptive/layout/PaneExpansionState;
+	public static final fun rememberPaneExpansionState (Landroidx/compose/material3/adaptive/layout/PaneExpansionStateKey;Ljava/util/List;ILandroidx/compose/runtime/Composer;II)Landroidx/compose/material3/adaptive/layout/PaneExpansionState;
+	public static final fun rememberPaneExpansionState (Landroidx/compose/material3/adaptive/layout/PaneExpansionStateKeyProvider;Ljava/util/List;ILandroidx/compose/runtime/Composer;II)Landroidx/compose/material3/adaptive/layout/PaneExpansionState;
 }
 
 public final class androidx/compose/material3/adaptive/layout/PaneKt {
@@ -136,8 +149,22 @@ public final class androidx/compose/material3/adaptive/layout/PaneKt {
 }
 
 public abstract interface class androidx/compose/material3/adaptive/layout/PaneMotion {
+	public static final field Companion Landroidx/compose/material3/adaptive/layout/PaneMotion$Companion;
 	public abstract fun getEnterTransition (Landroidx/compose/material3/adaptive/layout/PaneScaffoldMotionScope;)Landroidx/compose/animation/EnterTransition;
 	public abstract fun getExitTransition (Landroidx/compose/material3/adaptive/layout/PaneScaffoldMotionScope;)Landroidx/compose/animation/ExitTransition;
+}
+
+public final class androidx/compose/material3/adaptive/layout/PaneMotion$Companion {
+	public final fun getAnimateBounds ()Landroidx/compose/material3/adaptive/layout/PaneMotion;
+	public final fun getEnterFromLeft ()Landroidx/compose/material3/adaptive/layout/PaneMotion;
+	public final fun getEnterFromLeftDelayed ()Landroidx/compose/material3/adaptive/layout/PaneMotion;
+	public final fun getEnterFromRight ()Landroidx/compose/material3/adaptive/layout/PaneMotion;
+	public final fun getEnterFromRightDelayed ()Landroidx/compose/material3/adaptive/layout/PaneMotion;
+	public final fun getEnterWithExpand ()Landroidx/compose/material3/adaptive/layout/PaneMotion;
+	public final fun getExitToLeft ()Landroidx/compose/material3/adaptive/layout/PaneMotion;
+	public final fun getExitToRight ()Landroidx/compose/material3/adaptive/layout/PaneMotion;
+	public final fun getExitWithShrink ()Landroidx/compose/material3/adaptive/layout/PaneMotion;
+	public final fun getNoMotion ()Landroidx/compose/material3/adaptive/layout/PaneMotion;
 }
 
 public final class androidx/compose/material3/adaptive/layout/PaneMotionData {
@@ -292,17 +319,11 @@ public final class androidx/compose/material3/adaptive/layout/ThreePaneScaffoldR
 public abstract interface class androidx/compose/material3/adaptive/layout/ThreePaneScaffoldScope : androidx/compose/material3/adaptive/layout/ExtendedPaneScaffoldScope {
 }
 
-public final class androidx/compose/material3/adaptive/layout/ThreePaneScaffoldState {
+public abstract class androidx/compose/material3/adaptive/layout/ThreePaneScaffoldState {
 	public static final field $stable I
-	public fun <init> (Landroidx/compose/material3/adaptive/layout/ThreePaneScaffoldValue;)V
-	public final fun animateTo (Landroidx/compose/material3/adaptive/layout/ThreePaneScaffoldValue;Landroidx/compose/animation/core/FiniteAnimationSpec;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun animateTo$default (Landroidx/compose/material3/adaptive/layout/ThreePaneScaffoldState;Landroidx/compose/material3/adaptive/layout/ThreePaneScaffoldValue;Landroidx/compose/animation/core/FiniteAnimationSpec;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public final fun getCurrentState ()Landroidx/compose/material3/adaptive/layout/ThreePaneScaffoldValue;
-	public final fun getProgressFraction ()F
-	public final fun getTargetState ()Landroidx/compose/material3/adaptive/layout/ThreePaneScaffoldValue;
-	public final fun seekTo (FLandroidx/compose/material3/adaptive/layout/ThreePaneScaffoldValue;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun seekTo$default (Landroidx/compose/material3/adaptive/layout/ThreePaneScaffoldState;FLandroidx/compose/material3/adaptive/layout/ThreePaneScaffoldValue;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public final fun snapTo (Landroidx/compose/material3/adaptive/layout/ThreePaneScaffoldValue;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getCurrentState ()Landroidx/compose/material3/adaptive/layout/ThreePaneScaffoldValue;
+	public abstract fun getProgressFraction ()F
+	public abstract fun getTargetState ()Landroidx/compose/material3/adaptive/layout/ThreePaneScaffoldValue;
 }
 
 public final class androidx/compose/material3/adaptive/layout/ThreePaneScaffoldValue : androidx/compose/material3/adaptive/layout/PaneExpansionStateKeyProvider, androidx/compose/material3/adaptive/layout/PaneScaffoldValue {
